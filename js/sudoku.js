@@ -36,6 +36,7 @@ new Vue({
     },
     resetGame () { // 重新开始游戏
       this.rowList = []
+      this.time = 720 - this.difficultyLevel * 120
       this.cellValueList = {}
       this.abandon = false
       this.gameover = false
@@ -81,8 +82,9 @@ new Vue({
         for (let cellIndex = 0; cellIndex < 9; cellIndex++) {
           const edit = Math.floor(Math.random() * 100) < this.difficultyLevel * 10 + 10
           if (edit) {
-            this.cellValueList['cell-' + index + '-' + cellIndex] = null
+            this.cellValueList['cell-' + index + '-' + cellIndex] = ''
           }
+          typeof (this.cellValueList['cell-' + index + '-' + cellIndex])
         }
       }
     },
