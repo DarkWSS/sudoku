@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  background-image: url(./img/sudoku_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.head_info {
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  margin-top: -35rem;
+}
+
+.head_info span {
+  width: 2rem;
+  display: inline-block;
+}
+
+.sudoku_area {
+  width: 27rem;
+  height: 0;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 0 1px 1px #aaa;
+  overflow-y: hidden;
+  transition: all 2s;
+}
+
+.sudoku_start {
+  height: 27rem;
+}
+
+.sudoku_row {
+  width: 9rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sudoku_cell {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  line-height: 3rem;
+  border: 1px solid #aaa;
+}
+
+input {
+  width: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+}
+
+input:focus {
+  border: 0;
+  outline: none;
+}
+
+input:read-only {
+  color: #aaa;
+}
+
+.game_info {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  margin-top: 35rem;
+}
+
+.game_info button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  color: #fff;
+  margin: 0 2rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+#start_btn {
+  margin: 0;
+  background-color: #00cd66;
+}
+
+.game_info button:nth-child(1) {
+  background-color: #3333ff;
+}
+
+.game_info button:nth-child(2) {
+  background-color: #ff0000;
+}
+
+.game_info button:nth-child(3) {
+  background-color: #00cd66;
+}
+
+.game_info button:nth-child(4) {
+  background-color: #eeee00;
+}
+
+.pupup_mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.open_popup {
+  display: flex;
+}
+
+.pupup_mask .pupup_area {
+  background-color: #fff;
+  border-radius: 4px;
+  width: 30rem;
+  height: 16rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.pupup_mask .pupup_area h2 {
+  margin: 0;
+}
+
+.pupup_mask .pupup_area .choose_area {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 3rem;
+}
+
+.pupup_mask .pupup_area .choose_area .choose {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.5s;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pupup_mask .pupup_area .choose_area .choose:hover {
+  background-color: #ccc;
+}
+
+.pupup_mask .pupup_area .choose_area .choosed {
+  background-color: #3333ff;
+  color: #fff;
+}
+
+.pupup_mask .pupup_area .choose_area .choosed:hover {
+  background-color: #3333ff;
+}
+
+.pupup_mask .pupup_area .msg {
+  margin: 2rem;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+.pupup_mask .pupup_area .button_area {
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.pupup_mask .pupup_area .button_area button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #fff;
+  background-color: #3333ff;
+}
+
+.pupup_mask .pupup_area .button_area button:nth-child(2) {
+  color: #454545;
+  background-color: #fff;
+}

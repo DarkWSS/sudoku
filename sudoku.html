@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数独游戏</title>
+  <link rel="stylesheet" href="./css/sudoku.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="head_info">
+      <h2>数独游戏</h2>
+      <p>游戏难度：{{difficultyTextArr[difficultyLevel] || '未选择'}}<span></span>游戏剩余时间：{{time}}s</p>
+    </div>
+    <div class="sudoku_area" :class="{'sudoku_start': gamestart}">
+      <div class="sudoku_row" v-for="(row, index) in rowList" :key="index">
+        <div class="sudoku_cell" v-for="(value, cellIndex) in row" :key="cellIndex">
+          <input
+            :value="!abandon && (cellValueList['cell-' + index + '-' + cellIndex] || cellValueList['cell-' + index + '-' + cellIndex] === null) ? cellValueList['cell-' + index + '-' + cellIndex] : value"
+            @input="checkInput($event, index, cellIndex)"
+            :readonly="abandon || !cellValueList['cell-' + index + '-' + cellIndex] || cellValueList['cell-' + index + '-' + cellIndex] !== null">
+        </div>
+      </div>
+    </div>
+    <div class="game_info">
+      <button v-if="!gamestart" @click="pupopStatus = true" id="start_btn">开始游戏</button>
+      <template v-else>
+        <button v-show="!gameover" @click="judgeSudoku()">提交答案</button>
+        <button v-show="!gameover" @click="abandonAnswer()">放弃答题</button>
+        <button v-show="gameover" @click="resetGame()">重新开始</button>
+        <button v-show="gameover" @click="pupopStatus = true">选择难度</button>
+      </template>
+    </div>
+    <div class="pupup_mask" :class="{'open_popup': true}" v-show="pupopStatus">
+      <div class="pupup_area">
+        <h2>选择难度</h2>
+        <div class="choose_area">
+          <div class="choose" v-for="(difficulty, index) in difficultyTextArr" :key="index"
+            @click="chooseDifficultyLevel(index)" :class="{'choosed': index==difficultyLevel}">{{difficulty}}</div>
+        </div>
+        <div class="msg">当前难度单局游戏限时{{time}}秒，单个数独块隐藏概率{{difficultyLevel * 10 + 10}}%</div>
+        <div class="button_area">
+          <button @click="startGame()">开始</button>
+          <button @click="pupopStatus = false">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/vue.js"></script>
+  <script src="./js/sudoku.js"></script>
+</body>
+
+</html>
