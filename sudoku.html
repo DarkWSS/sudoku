@@ -18,7 +18,7 @@
       <div class="sudoku_row" v-for="(row, index) in rowList" :key="index">
         <div class="sudoku_cell" v-for="(value, cellIndex) in row" :key="cellIndex">
           <input
-            :value="!abandon && typeof(cellValueList['cell-' + index + '-' + cellIndex]) != 'undefined' ? cellValueList['cell-' + index + '-' + cellIndex] : value"
+            :value="abandon || typeof(cellValueList['cell-' + index + '-' + cellIndex]) == 'undefined' ? value : cellValueList['cell-' + index + '-' + cellIndex]"
             @input="checkInput($event, index, cellIndex)"
             :readonly="abandon || typeof(cellValueList['cell-' + index + '-' + cellIndex]) == 'undefined'">
         </div>

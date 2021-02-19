@@ -209,6 +209,7 @@ new Vue({
       }
       if (this.judgeBlock(answer) && this.judgeCol(answer) && this.judgeRow(answer)) {
         alert('答案正确')
+        this.gameover = true
       } else {
         alert('答案错误')
       }
